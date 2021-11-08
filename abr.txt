@@ -1,0 +1,14 @@
+1: function RandomizedAlphaBeta(position; depth; onTurn)
+2: 	bestValue = -inf
+3: 	allMoves  = []
+4: 	for all m in generateMoves(position; onTurn) do:
+5: 		value   = alphaBeta(executeMove(m); depth - 1;
+			opponent(onTurn);-inf;-bestValue + margin + 1) 
+6: 		Add (m, value) to the list allMoves
+7: 		if value > bestValue then
+8: 			bestValue = value
+9: 		end if
+10: 	end for
+11: 	goodEnough  = select moves with value >= bestValue - margin from allMoves
+12: 	return uniformly random move from goodEnough
+13: end function

@@ -1,0 +1,20 @@
+1: function alphaBeta(position; depth; onTurn; alpha; beta)
+2: 	if depth = 0 or endOfGame(position) then 		-> leaf node
+3: 		return evaluate(position)
+4: 	end if
+5: 	bestValue = -inf - 1
+6: 	for all m in generateMoves(position; onTurn) do: . Try all moves
+7: 		value = alphaBeta(executeMove(m), depth-1, opponent(onTurn),
+			-beta, -alpha)
+8: 		if value > bestV alue then
+9: 			bestValue = value
+10: 		end if
+11: 		if value > alpha then
+12: 			alpha =  value
+13: 		end if
+14: 		if alpha > beta then 				-> Pruning (cutoff)
+15: 			break
+16: 		end if
+17: 	end for
+18: 	return bestValue
+19: end function

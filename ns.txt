@@ -1,0 +1,24 @@
+1: function negaScout(position; depth; onTurn; alpha; beta)
+2: 	if depth = 0 or endOfGame(position) then 
+3: 		return evaluate(position)
+4: 	end if
+5: 	bestValue  = -inf - 1
+6: 	beta2 = beta 
+7: 	for all m in generateMoves(position; onT urn) do: . Try all moves
+8: 		value  = -negaScout(executeMove(m), depth-1, opponent(onTurn),-beta2, -alpha) 
+9: 	if value > alpha and value < beta and m is not the first move then
+10: 		value  = -negaScout(executeMove(m), depth 􀀀 1, opponent(onTurn), -beta, -alpha) 
+11: 	end if
+12: 	if value > bestValue then
+13: 		bestValue =  value
+14: 	end if
+15: 	if value > alpha then
+16: 		alpha  = value
+17: 	end if
+18: 	if alpha > beta then 
+19: 		break
+20: 	end if
+21: 	beta2 = alpha + 1
+22: 	end for
+23: 	return bestValue
+24: end function
